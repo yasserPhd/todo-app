@@ -1,0 +1,56 @@
+<div class="todos">
+   <form (submit)="addToDo()">
+       <input
+       type="text"
+       name="inputTodo"
+       placeholder="enter to do .."
+       class="todo-input"
+       [(ngModel)]="inputTodo"
+      
+       />
+      
+       <input type="submit"  value="add todo" class="todo-submit" >
+</form>
+
+
+
+
+
+    <div  *ngFor="let todo of todos; let i = index;" class="todo {{(todo.completed ? 'done' : '')}} ">  
+    <!-- <div *ngFor="let todo of todos; let i = index;" class="todo {{ (todo.completed ? 'done' : '') }}"> -->
+		
+            <!-- <span>content: <input formControlName="content"></span> -->
+       
+        <div class="id">{{ i }}</div>
+        
+        <div class="content"  (click)="toggleDone(i)">{{todo.content}} </div>
+    <!-- <div class="id"> {{ i }} </div> -->
+    <!-- <div class="content">{{todo.content}}</div>  -->
+    <button class="delete" (click)="deleteToDo(i)">remove</button>  
+    <button class="edit" (click)="editTodo(i,todo.content); onEdit()"> 
+        <input *ngIf="isEditEnable"  [(ngModel)]="todo.content">
+        edit 
+        
+        <!-- <input
+        type="text"
+        name="inputTodo"
+        placeholder="edit to do .."
+        class="todo-input"
+       
+        [(ngModel)]="Todoedit" 
+       
+        /> -->
+    </button>  
+    
+    <!-- <button class="add" (click)="addToDo()">add</button>   -->
+</div>
+<!-- <input
+       type="text"
+       name="inputTodo"
+       placeholder="edit to do .."
+       class="todo-input"
+       [(ngModel)]="Todoedit"
+      
+       /> -->
+      
+    
